@@ -1,0 +1,17 @@
+<h1>To Do List</h1>
+<ul>
+  <% @tasks.each() do |task| %>
+    <li><%= task.description %></li>
+  <% end %>
+</ul>
+
+<form action='/success' method='post'>
+  <div class='form-group'>
+    <input id='the_task' name='the_task' type='text'>
+  </div>
+  <button type='submit' class='btn btn-success'>Add task</button>
+  <div class='form-group'>
+    <input name='delete task' type='text'>
+  </div>
+  <button type='submit' class='btn btn-danger'>Delete task</button>
+</form>
