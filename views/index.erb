@@ -1,17 +1,18 @@
-<h1>To Do List</h1>
-<ul>
-  <% @tasks.each() do |task| %>
-    <li><%= task.description %></li>
-  <% end %>
-</ul>
+<% if @all_lists.any? %>
+  <h1> This be yo lists </h1>
+  <ul>
+    <% @all_lists.each() do |list| %>
+      <li><a href ="/single_list/<%= list.id() %>"><%= list.name() %></a></li>
+    <% end %>
 
-<form action='/success' method='post'>
-  <div class='form-group'>
-    <input id='the_task' name='the_task' type='text'>
-  </div>
-  <button type='submit' class='btn btn-success'>Add task</button>
-  <div class='form-group'>
-    <input name='delete task' type='text'>
-  </div>
-  <button type='submit' class='btn btn-danger'>Delete task</button>
+<% else %>
+  <h4>Damn you lazy.  There ain't no lists here.  Make a motherfuckin list!</h4>
+<% end %>
+
+<form action="/new_list" method="post">
+    <label for = "user_list_input">Insert your list here, baby:</label>
+
+    <input id="user_list_input" name="user_list_input" type="text">
+  <button type="submit" class='btn btn-success'>Let's do it!</button>
 </form>
+</ul>

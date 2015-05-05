@@ -47,4 +47,14 @@ describe(List) do
       expect(list1).to(eq(list2))
     end
   end
+
+  describe(".find") do
+    it("finds a list object with a matching id and returns the list object") do
+      list1 = List.new({:name => "Epicodus stuff", :id => nil})
+      list1.save()
+      list2 = List.new({:name => "Epicodus stuff", :id => nil})
+      list2.save()
+      expect(List.find(list2.id())).to(eq(list2))
+    end
+  end
 end
