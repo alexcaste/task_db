@@ -1,0 +1,20 @@
+<h1>><%= @the_list_of_tasks.name() %> </h1>
+
+<% if @the_list_of_tasks.tasks().any?() %>
+  <h3>Here are yo damn tasks.  Get this shit done, already.</h3>
+
+  <ul>
+    <% @the_list_of_tasks.tasks().each() do |single_task| %>
+      <li><%= task.description() %> </li>
+    <% end %>
+  </ul>
+
+  <% else %>
+  <p>Write some damn tasks for this damn list.</p>
+  <% end %>
+
+  <hr>
+
+<div class = "container">
+  <a href = "/">Back to yo damn lists.</a>
+</div>

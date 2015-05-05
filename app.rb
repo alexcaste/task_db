@@ -20,22 +20,7 @@ post('/new_list') do
   erb(:index)
 end
 
-get('single_list/:id') do
+get('/single_list/:id') do
   @the_list_of_tasks = List.find(params.fetch("id").to_i())
   erb(:single_list)
 end
-
-# get('/') do
-#   @tasks = Task.all()
-#   erb(:index)
-# end
-#
-# post('/success') do
-#
-#   description = params.fetch('the_task')
-#
-#   new_task = Task.new(description)
-#   binding.pry
-#   new_task.save()
-#   erb(:success)
-# end

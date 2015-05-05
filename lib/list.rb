@@ -36,4 +36,15 @@ class List
     search_list
   end
 
+  define_method('#tasks') do
+    returned_tasks = []
+    task_table = DB.exec("SELECT * FROM tasks WHERE list_id = #{self.id()};")
+    task_table.each() do |task_object|
+      description = task_object.fetch("description")
+      list_id = task_object.fetch("list_id").to_i()
+      returned_tasks.push(Task.new({description: description, list_id: list_id}))
+    end
+    returned_tasks
+  end
+
 end

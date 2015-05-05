@@ -25,13 +25,27 @@ end
 
 describe('the tasks of a list path', {:type => :feature}) do
   it("displays thye tasks within a list") do
-    list = List.new({name: 'Farting', id: 1})
+    list = List.new({name: 'Lots of Farting', id: 1})
     list.save()
     tasks = Task.new({description: 'on the sofa', list_id: 1})
     tasks.save()
+
+    visit("/single_list/#{list.id()}")
     expect(page).to have_content('on the sofa')
   end
 end
+
+describe('the adding task to list path', {:type => :feature}) do
+  it("allows user to add a task to a list") do
+    list = List.new({name: 'Lots of Farting', id: 1})
+    list.save()
+    visit("/single_list/#{list.id()}")
+    fill_in('user_task_input', :with => 'defeat France')
+    click_button("I'll get around to this")
+    expect(page).to have_content('defeat France')
+  end
+end
+
 
 
 #as a user, I want to see a homepage with a list of lists
