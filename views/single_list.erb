@@ -1,13 +1,13 @@
-<h1>><%= @the_list_of_tasks.name() %> </h1>
+<h1><%= @the_list_of_tasks.name() %> </h1>
 
 <% if @the_list_of_tasks.tasks().any?() %>
   <h3>Here are yo damn tasks.  Get this shit done, already.</h3>
 
   <ul>
     <% @the_list_of_tasks.tasks().each() do |single_task| %>
-      <li><%= task.description() %> </li>
+      <li><%= single_task.description() %> <%= single_task.due() %> </li>
     <% end %>
-  </ul>
+
 
   <% else %>
   <p>Write some damn tasks for this damn list.</p>
@@ -15,6 +15,18 @@
 
   <hr>
 
+  <form action="/new_task" method="post">
+      <input id="list_id" name="list_id" type="hidden" value="<%= @the_list_of_tasks.id()%>">
+      <label for = "user_task_input">Insert your task here, dawg:</label>
+      <input id="user_task_input" name="user_task_input" type="text">
+
+      <label for = "user_date_input">When yo gonna get up off yo lazy ass to do this?:</label>
+      <input id="user_date_input" name="user_date_input" type="text">
+
+      <button type="submit" class='btn btn-success'>I'll get around to this</button>
+  </form>
+
+</ul>
 <div class = "container">
   <a href = "/">Back to yo damn lists.</a>
 </div>
